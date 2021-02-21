@@ -1,0 +1,6 @@
+include CHANGELOG.md
+include LICENSE
+include MANIFEST.in
+include README.rst
+recursive-include docs *
+recursive-include django_calendardate *.html *.png *.gif *js *.css *jpg *jpeg *svg *py
