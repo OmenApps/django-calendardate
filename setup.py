@@ -7,7 +7,7 @@ with open(os.path.join(os.path.dirname(__file__), "README.rst")) as fh:
 
 setup(
     name="django-calendardate",
-    version=__import__("django_calendardate").__version__,
+    version="0.1.0",
     description="A calendar model with date metadata for querying against.",
     long_description=readme,
     author="Jack Linke",
