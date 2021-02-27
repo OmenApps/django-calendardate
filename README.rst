@@ -106,6 +106,20 @@ Each of the following properties are provided for each date.
         returns a string with the abbreviated name of the month for the given date (e.g.: "Jan")
 
 
+Quick Example:
+--------------
+
+Say you have an Order model with a `order_date` field, and you want to query all of the orders that were placed in the third fiscal quarter of fiscal year 2021.
+
+.. code-block:: python
+
+    # Return list of  of dates in 3rd Qtr of FY21
+    third_fiscal_qtr_dates = CalendarDate.objects.filter(fiscal_year=2021, fiscal_quarter=3).values_list('calendar_date', flat=True)
+    
+    # Filter on those dates
+    third_qtr_orders = Order.objects.filter(order_date__in=third_fiscal_qtr_dates)
+
+
 To Do
 -----
 
@@ -113,4 +127,4 @@ To Do
 
 2. Better documentation
 
-3. Translations (strings already marked)
+3. Translations (strings already marked for translation)
