@@ -80,7 +80,7 @@ def get_fiscal_quarter(date):
         quarter_starts = [3, 6, 9, 12]
         quarter_idx = quarter_starts.index(fy_start_month)
 
-    quarter_start_dates = [datetime.date(2020, month, 1) for month in quarter_starts]
+    quarter_start_dates = [datetime.date(date.year, month, 1) for month in quarter_starts]
 
     quarter = bisect.bisect(quarter_start_dates, date) - quarter_idx
     return quarter if quarter > 0 else quarter + 4
