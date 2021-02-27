@@ -60,7 +60,7 @@ class CalendarDate(models.Model):
         ]
 
     def __str__(self):
-        return f"{self.date}"
+        return f"{self.calendar_date}"
 
     @property
     def get_day_name(self):
