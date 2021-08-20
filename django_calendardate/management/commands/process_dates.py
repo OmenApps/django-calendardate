@@ -33,6 +33,8 @@ class Command(BaseCommand):
         start_date = datetime.strptime(options["start_date"], "%Y-%m-%d").date()
         end_date = datetime.strptime(options["end_date"], "%Y-%m-%d").date()
         delta = timedelta(days=1)
+        
+        force = options["force"] if options["force"] else False
 
         logger.debug(f"Processing dates from {start_date} to {end_date}")
 
@@ -40,7 +42,10 @@ class Command(BaseCommand):
 
             date_metadata = process_date(start_date)
 
-            obj, created = CalendarDate.objects.update_or_create(**date_metadata)
+            if force:
+                obj, created = CalendarDate.objects.update_or_create(**date_metadata)
+            else:
+                obj, created = CalendarDate.objects.get_or_create(**date_metadata)
 
             start_date += delta
 
@@ -49,7 +54,7 @@ class Command(BaseCommand):
                     self.style.SUCCESS(f"Successfully created/verified CalendarDate for {obj.calendar_date}.")
                 )
             else:
-                if options["force"]:
+                if force:
                     self.stdout.write(self.style.SUCCESS(f"CalendarDate for {obj.calendar_date} updated."))
                 else:
                     self.stdout.write(
