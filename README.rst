@@ -17,6 +17,14 @@ THIS PROJECT IS PRE_RELEASE. It works, but is missing documentation and tests. B
 Usage
 -----
 
+Install using pip:
+
+    ``pip install django-caledardate``
+
+Add to ``settings.INSTALLED_APPS``
+
+Run ``manage.py migrate``
+
 To process a range of dates (ignoring any duplicates):
 
     ``python manage.py process_dates 2021-01-01 2021-12-31``
