@@ -19,7 +19,7 @@ Usage
 
 Install using pip:
 
-    ``pip install django-caledardate``
+    ``pip install django-calendardate``
 
 Add to ``settings.INSTALLED_APPS``
 
